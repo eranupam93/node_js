@@ -1,17 +1,9 @@
-// const { sum, add } = require('./util') common js module
-// import { sum } from './util.js'
-// import { appendFile } from 'fs'
-import { readFile, appendFile } from 'fs/promises'
+import http from 'http'
 
-const read_file = async (file_name) => {
-    const data = await readFile(file_name, "utf-8")
-    console.log(data)
-}
-read_file('sample.txt')
+const server = http.createServer((req, res) => {
+    res.end("you have requested for something")
+})
 
-const append_file = async (file_name, content) => {
-    await appendFile(file_name, content)
-}
+const port = 2000
 
-console.log(append_file("sample.txt", "Yuhooooo"))
-// console.log(sum(12, 3))
+server.listen(port, () => console.log(`serveris running in port ${port}`))

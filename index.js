@@ -1,9 +1,14 @@
-import http from 'http'
+import express from 'express'
+import path from 'path'
 
-const server = http.createServer((req, res) => {
-    res.end("you have requested for something")
-})
+const app = express()
+app.get('/', ((req, res) => {
+    let dir = path.resolve()
+    // const url = dir + '/index.html'
+    const url = path.join(dir, '/index.html')
+    console.log(dir + '/index.js')
+    res.sendFile(url)
 
+}))
 const port = 2000
-
-server.listen(port, () => console.log(`serveris running in port ${port}`))
+app.listen(port, () => console.log(`server is runnning in port ${port}`))
